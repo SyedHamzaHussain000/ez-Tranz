@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View,Image} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './index.style';
 import CustomText from '../../Components/Text';
@@ -50,6 +50,7 @@ const ForgetPassword = ({navigation, route}) => {
 
     <View style={styles.main_container}>
       <BackButton onPressBack={() => navigation.goBack()} />
+      <Image source={images.logo} style={{height:70, width:70, alignSelf:'center', marginTop:40}}/>
 
       <View style={{height: 80}}></View>
       <View style={styles.container}>

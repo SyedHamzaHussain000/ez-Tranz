@@ -16,19 +16,19 @@ const Translations = ({navigation}) => {
       langTitle: 'English',
     },
     {
-      id: 1,
+      id: 2,
       langTitle: 'English',
     },
     {
-      id: 1,
+      id: 3,
       langTitle: 'English',
     },
     {
-      id: 1,
+      id: 4,
       langTitle: 'English',
     },
     {
-      id: 1,
+      id: 5,
       langTitle: 'English',
     },
   ];
@@ -40,7 +40,7 @@ const Translations = ({navigation}) => {
           <BackButton onPressBack={() => navigation.goBack()} />
           <View
             style={{backgroundColor: 'white', borderRadius: 6, marginTop: 15}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('Home')}>
               <Ionicons
                 name={'globe-outline'}
                 size={30}

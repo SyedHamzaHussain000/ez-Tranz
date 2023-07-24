@@ -7,10 +7,9 @@ export const styles = StyleSheet.create({
   },
   container: {
     marginHorizontal: 30,
-    marginTop: 30,
   },
   screen_title: {
-    marginTop: 30,
+    marginTop: 20,
     fontSize: 25,
     fontWeight: 'bold',
   },

@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     paddingBottom:200
   },
   screen_title: {
-    marginTop: 30,
+    marginTop: 20,
     fontSize: 22,
     fontWeight: 'bold',
   },

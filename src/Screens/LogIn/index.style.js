@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
   },
   container: {
     marginHorizontal: 30,
-    marginTop:20
   },
   screen_title:{
     marginTop:30,
@@ -20,7 +19,6 @@ export const styles = StyleSheet.create({
     borderRadius:10,
     alignItems:'center',
     justifyContent:'center',
-    marginTop:30
   },
   devider_View:{
     height:2,

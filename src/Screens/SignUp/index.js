@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView,Image} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './index.style';
 import CustomText from '../../Components/Text';
@@ -17,6 +17,7 @@ const SignUp = ({navigation}) => {
     <FastImage source={images.Background} style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
         <BackButton onPressBack={() => navigation.goBack()} />
+        <Image source={images.logo} style={{height:70, width:70, alignSelf:'center', marginTop:20}}/>
 
         <View style={styles.main_container}>
           <View style={styles.container}>

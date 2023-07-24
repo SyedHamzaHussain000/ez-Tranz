@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import CustomText from '../../Components/Text';
 import CustomButton from '../../Components/Button';
@@ -104,6 +104,7 @@ const Otp = ({navigation, route}) => {
     <FastImage source={images.Background} style={{flex: 1}}>
       <View style={{flex: 1}}>
         <BackButton onPressBack={() => navigation.goBack()} />
+        <Image source={images.logo} style={{height:70, width:70, alignSelf:'center', marginTop:30}}/>
 
         <ScrollView
           contentContainerStyle={{

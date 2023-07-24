@@ -3,7 +3,7 @@ import {COLORS} from '../../Constants/theme';
 
 export const styles = StyleSheet.create({
     main_container: {
-      paddingBottom:125
+      paddingBottom:260
       },
       flatlist_container: {
         flex: 1,

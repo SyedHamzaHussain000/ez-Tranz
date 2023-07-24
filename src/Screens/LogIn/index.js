@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
   ScrollView,
+  Image
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './index.style';
@@ -23,7 +24,10 @@ const Login = ({navigation}) => {
   return (
     <>
       <FastImage source={images.Background} style={{flex: 1}}>
+      <Image source={images.logo} style={{height:70, width:70, alignSelf:'center', marginTop:40}}/>
+
         <ScrollView style={{flex: 1}}>
+
           <View style={styles.main_container}>
             <View style={styles.container}>
               <CustomText

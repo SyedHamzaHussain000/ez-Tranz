@@ -1,4 +1,11 @@
-import {View, Text, TextInput, FlatList, Image,TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import FastImage from 'react-native-fast-image';
 import images from '../../Constants/images';
@@ -6,6 +13,7 @@ import BackButton from '../../Components/Back Button';
 import CustomText from '../../Components/Text';
 import {styles} from './index.style';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Octicons from 'react-native-vector-icons/Octicons';
 import {COLORS} from '../../Constants/theme';
 
 const Home = ({navigation}) => {
@@ -43,20 +51,23 @@ const Home = ({navigation}) => {
       image: images.Flag_of_Finland_Flat_Round,
     },
     {
-      id: 7,
+      id: 9,
       image: images.Flag_of_Argentina_Flat_Round,
     },
     {
-      id: 8,
+      id: 10,
       image: images.Flag_of_United_States_Flat_Round,
     },
-  
   ];
 
   return (
     <FastImage source={images.Background} style={{flex: 1}}>
-
-      <BackButton onPressBack={() => navigation.goBack()} />
+      <View
+        style={{alignItems: 'flex-end', marginHorizontal: 20, marginTop: 15}}>
+        <TouchableOpacity onPress={()=> navigation.navigate('Profile')}>
+          <Octicons name={'person'} size={35} color={COLORS.text_white} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.main_container}>
         <CustomText
           text={'Choose Mother Language'}
@@ -76,11 +87,10 @@ const Home = ({navigation}) => {
             return (
               <View style={styles.flatlist_container}>
                 <View style={styles.card}>
-                  <TouchableOpacity onPress={()=> navigation.navigate('Translations')}>
-
-                  <Image source={item.image} style={styles.flag_container} />
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('Translations')}>
+                    <Image source={item.image} style={styles.flag_container} />
                   </TouchableOpacity>
-            
                 </View>
               </View>
             );
