@@ -1,10 +1,10 @@
-import {View, Text, Image, ScrollView} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import CustomText from '../../Components/Text';
-import CustomButton from '../../Components/Button';
-import {styles} from './index.style';
-import Modal from 'react-native-modal';
-import Lottie from 'lottie-react-native';
+import { View, Text, Image, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import CustomText from "../../Components/Text";
+import CustomButton from "../../Components/Button";
+import { styles } from "./index.style";
+import Modal from "react-native-modal";
+import Lottie from "lottie-react-native";
 import {
   CodeField,
   Cursor,
@@ -12,39 +12,40 @@ import {
   useClearByFocusCell,
   MaskSymbol,
   isLastFilledCell,
-} from 'react-native-confirmation-code-field';
-import images from '../../Constants/images';
+} from "react-native-confirmation-code-field";
+import images from "../../Constants/images";
 
-import BackButton from '../../Components/Back Button';
-import axios from 'axios';
-import FastImage from 'react-native-fast-image';
+import BackButton from "../../Components/Back Button";
+import axios from "axios";
+import FastImage from "react-native-fast-image";
+import BassUrl from "../../BassUrl";
+import Toast from "react-native-toast-message";
+import { LoaderModal } from "../../Components";
 
 const CELL_COUNT = 4;
-const Otp = ({navigation, route}) => {
+const Otp = ({ navigation, route }) => {
   const [count, setCount] = useState(59);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isLoader, setIsLoader] = useState(false);
 
-  // const {itemId, id} = route.params;
+  const { itemId, id } = route.params;
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
-
-  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
 
-  const renderCell = ({index, symbol, isFocused}) => {
+  const renderCell = ({ index, symbol, isFocused }) => {
     let textChild = null;
 
     if (symbol) {
       textChild = (
         <MaskSymbol
           maskSymbol="*"
-          isLastFilledCell={isLastFilledCell({index, value})}>
+          isLastFilledCell={isLastFilledCell({ index, value })}
+        >
           {symbol}
         </MaskSymbol>
       );
@@ -55,7 +56,8 @@ const Otp = ({navigation, route}) => {
       <Text
         key={index}
         style={[styles.cell, isFocused && styles.focusCell]}
-        onLayout={getCellOnLayoutHandler(index)}>
+        onLayout={getCellOnLayoutHandler(index)}
+      >
         {textChild}
       </Text>
     );
@@ -73,53 +75,73 @@ const Otp = ({navigation, route}) => {
   //api
 
   const CheckingOtp = () => {
-    console.log('vallll', value);
-
+    console.log("vallll", value);
+    setIsLoader(true);
     let data = new FormData();
-    data.append('id', id);
-    data.append('code', value);
+    data.append("id", id);
+    data.append("code", value);
 
     let config = {
-      method: 'post',
+      method: "post",
       maxBodyLength: Infinity,
-      url: 'https://customdemo.website/apps/recon-security/public/api/check-valid-email-code',
+      url: `${BassUrl}/api/check-valid-email-code`,
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
       data: data,
     };
 
     axios
       .request(config)
-      .then(response => {
-        navigation.navigate('ResetPassword', {ids: id});
-        console.log(JSON.stringify(response.data));
+      .then((response) => {
+        setIsLoader(false);
+        if (response.data.success === true) {
+          navigation.navigate("ResetPassword", {
+            ids: id,
+          });
+          showToast("success", response.data.success);
+          console.log(JSON.stringify(response.data));
+        } else {
+          showToast("error", "Invalid Code");
+        }
       })
-      .catch(error => {
+      .catch((error) => {
+        setIsLoader(false);
         console.log(error);
       });
   };
 
+  const showToast = (type, msg) => {
+    Toast.show({
+      type: type,
+      text1: msg,
+    });
+  };
+
   return (
-    <FastImage source={images.Background} style={{flex: 1}}>
-      <View style={{flex: 1}}>
+    <FastImage source={images.Background} style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <BackButton onPressBack={() => navigation.goBack()} />
-        <Image source={images.logo} style={{height:70, width:70, alignSelf:'center', marginTop:30}}/>
+        <Image
+          source={images.logo}
+          style={{ height: 70, width: 70, alignSelf: "center", marginTop: 30 }}
+        />
 
         <ScrollView
           contentContainerStyle={{
             flexGrow: 1,
-            justifyContent: 'center',
+            justifyContent: "center",
             marginHorizontal: 20,
-          }}>
+          }}
+        >
           <CustomText
-            text={'Email'}
-            style={{fontSize: 20, fontWeight: 'bold'}}
+            text={"Email"}
+            style={{ fontSize: 20, fontWeight: "bold" }}
           />
           <CustomText
-            style={{marginTop: 10}}
+            style={{ marginTop: 10 }}
             text={
-              ' An email has been sent to your registered email address. Enter the verification code below:'
+              " An email has been sent to your registered email address. Enter the verification code below:"
             }
           />
 
@@ -134,29 +156,34 @@ const Otp = ({navigation, route}) => {
             textContentType="oneTimeCode"
             renderCell={renderCell}
           />
-          <Text style={{color: 'white', alignSelf: 'center'}}>
+          <Text style={{ color: "white", alignSelf: "center" }}>
             00 : {count}
           </Text>
           <CustomText
-            text={'Didnt receive a code?'}
-            style={{alignSelf: 'center', color: 'white', marginTop: 20}}
+            text={"Didnt receive a code?"}
+            style={{ alignSelf: "center", color: "white", marginTop: 20 }}
           />
           <CustomText
-            text={'Resend Code'}
+            text={"Resend Code"}
             style={{
-              alignSelf: 'center',
-              color: 'white',
+              alignSelf: "center",
+              color: "white",
               marginTop: 10,
             }}
           />
           {/* <CustomButton buttonText={'Verify'} onPress={() => CheckingOtp()} /> */}
-          <CustomButton buttonText={'Verify'} onPress={() => toggleModal()} />
+          {isLoader ? (
+            <LoaderModal />
+          ) : (
+            <CustomButton buttonText={"Verify"} onPress={() => CheckingOtp()} />
+          )}
           <View>
             <Modal isVisible={isModalVisible}>
               <FastImage
                 source={images.Background}
-                style={{flex: 0.6, alignItems: 'center'}}>
-              {/* <View
+                style={{ flex: 0.6, alignItems: "center" }}
+              >
+                {/* <View
                 style={{
                   flex: 0.6,
                   backgroundColor: '#E61917',
@@ -171,22 +198,23 @@ const Otp = ({navigation, route}) => {
                   }}
                 />
                 <CustomText
-                  text={'Successfully Verified'}
-                  style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}
+                  text={"Successfully Verified"}
+                  style={{ fontSize: 18, fontWeight: "bold", marginTop: 15 }}
                 />
                 <CustomButton
                   onPress={() => {
-                    navigation.navigate('Login');
+                    navigation.navigate("Login");
                   }}
-                  buttonText={'Back To Login'}
-                  style={{width: '80%'}}
+                  buttonText={"Back To Login"}
+                  style={{ width: "80%" }}
                 />
-                </FastImage>
+              </FastImage>
               {/* </View> */}
             </Modal>
           </View>
         </ScrollView>
       </View>
+      <Toast />
     </FastImage>
   );
 };

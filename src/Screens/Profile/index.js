@@ -6,8 +6,16 @@ import {styles} from './index.style';
 import BackButton from '../../Components/Back Button';
 import CustomText from '../../Components/Text';
 import CustomButton from '../../Components/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { logOut } from '../../Redux/authSlice';
 
 const Profile = ({navigation}) => {
+  const userData = useSelector((state) => state.data.user);
+  console.log('userrrrrrrrrrrrrrrrrrrrrr',userData.user)
+
+
+const dispatch = useDispatch();
+
   return (
     <FastImage source={images.Background} style={{flex: 1}}>
       <View style={styles.main_container}>
@@ -16,13 +24,13 @@ const Profile = ({navigation}) => {
             <Image source={images.logo} style={{height:70, width:70, alignSelf:'center'}}/>
           <CustomText text={'Profile'} style={styles.title} />
           <View style={styles.name_view}>
-            <CustomText text={'Name'} />
+            <CustomText text={userData.name} />
           </View>
           <View style={styles.name_view}>
-            <CustomText text={'Example@gmail.com'} />
+            <CustomText text={userData.email} />
           </View>
         <CustomButton buttonText={'Edit Profile'} onPress={()=> navigation.navigate('EditProfile')}/>
-        <CustomButton buttonText={'LogOut'} onPress={()=>navigation.navigate('Login')}/>
+        <CustomButton buttonText={'LogOut'} onPress={()=> dispatch(logOut())}/>
  
         </View>
       </View>

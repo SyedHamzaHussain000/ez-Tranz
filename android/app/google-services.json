@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "935651938156",
+    "project_id": "tranz-d9b3d",
+    "storage_bucket": "tranz-d9b3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935651938156:android:5cfc4f590c2691f472ed49",
+        "android_client_info": {
+          "package_name": "com.tranz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935651938156-05f6v7u8ik2hkef60qu4h571a6jb8cdp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tranz",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "935651938156-4vmgqqeqmu2erh2rbh9lolr80ptiand0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZd4GYEBeG6uExc_Uk3dGWofWmwN55jO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935651938156-4vmgqqeqmu2erh2rbh9lolr80ptiand0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
