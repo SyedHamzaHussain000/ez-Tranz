@@ -7,6 +7,7 @@ import Login from '../Screens/LogIn';
 import ForgetPassword from '../Screens/ForgetPassword';
 import ResetPassword from '../Screens/Resetpassword';
 import Otp from '../Screens/Otp';
+import TermsAndConditions from '../Screens/TermsAndConditions';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,8 @@ const AuthStack = () => {
       <Stack.Screen name="Otp" component={Otp} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
+
     </Stack.Navigator>
   );
 };

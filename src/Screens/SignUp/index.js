@@ -55,7 +55,7 @@ const SignUp = ({ navigation }) => {
       .catch((error) => {
         setIsLoader(false);
 
-        showToast("error", 'Field Cannot be Empty');
+        showToast("error", "Field Cannot be Empty");
         console.log(error.message);
       });
   };
@@ -119,21 +119,30 @@ const SignUp = ({ navigation }) => {
                 text={"I have read and accept the "}
                 style={styles.termsText}
               />
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("TermsAndConditions", {navigatedFrom:'TermsAndConditions'})}
+              >
                 <CustomText
                   text={"terms and conditions"}
                   style={styles.termsTxt}
                 />
               </TouchableOpacity>
             </View>
+            <View style={{ paddingLeft: 30 }}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("TermsAndConditions", {navigatedFrom:'Privacypolicy'})}
+              >
+                <CustomText text={"Privacy Policy"} style={styles.termsTxt} />
+              </TouchableOpacity>
+            </View>
             {isLoader ? (
-              <LoaderModal/>
-            ):
-            <CustomButton
-              onPress={() => RegisterUser()}
-              buttonText={"Create an account"}
-            />
-            }
+              <LoaderModal />
+            ) : (
+              <CustomButton
+                onPress={() => RegisterUser()}
+                buttonText={"Create an account"}
+              />
+            )}
           </View>
         </View>
       </ScrollView>
