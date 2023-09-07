@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
       },
       Search_field: {
         height: 70,
+        width:"93%",
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: COLORS.text_white,

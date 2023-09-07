@@ -99,7 +99,7 @@ const Otp = ({ navigation, route }) => {
           navigation.navigate("ResetPassword", {
             ids: id,
           });
-          showToast("success", response.data.success);
+          showToast("success", response.data.message);
           console.log(JSON.stringify(response.data));
         } else {
           showToast("error", "Invalid Code");

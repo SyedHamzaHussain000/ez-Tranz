@@ -48,7 +48,7 @@ const Translations = ({ navigation }) => {
 
   const GOOGLE_TRANSLATE_API_KEY = "AIzaSyAQq8xavOwRXwMck2erWLGysH0Q13uRJTY";
 
-  const handleTranslateed = async (text, targetLanguages) => {
+  const handleTranslationApi = async (text, targetLanguages) => {
     setMyLoader(true);
 
     const translations = await Promise.all(
@@ -87,7 +87,7 @@ const Translations = ({ navigation }) => {
     if (inputText) {
       setTranslations([]);
 
-      let translatedText = await handleTranslateed(
+      let translatedText = await handleTranslationApi(
         inputText,
         selectedLanguages,
         GOOGLE_TRANSLATE_API_KEY
@@ -137,18 +137,17 @@ const Translations = ({ navigation }) => {
   const renderCountries = (item) => {
     let printedObjectCountries = [];
     return FlagsData.map((eachData, index) => {
-
       if (
         eachData.short_form === item.language &&
         !printedObjectCountries.includes(eachData.id)
       ) {
-      printedObjectCountries.push(eachData.id);
+        printedObjectCountries.push(eachData.id);
 
         return (
           <CustomText
             text={eachData.country}
             style={{ color: "#949494" }}
-            key={eachData.country} 
+            key={eachData.country}
           />
         );
       }
@@ -187,16 +186,21 @@ const Translations = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <View style={{ height: 1, backgroundColor: "#949494" }}></View>
-          <View style={styles.Search_field}>
-            <TextInput
-              value={inputText}
-              placeholder="Search here to translate"
-              placeholderTextColor={"#949494"}
-              onChangeText={(text) => setInputText(text)}
-            ></TextInput>
-            <TouchableOpacity onPress={() => handleClearInput()}>
-              <Ionicons name={"close"} size={25} color={"#949494"} />
-            </TouchableOpacity>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.Search_field}>
+              <TextInput
+                value={inputText}
+                placeholder="Search here to translate"
+                placeholderTextColor={"#949494"}
+                onChangeText={(text) => setInputText(text)}
+                multiline={true}
+              ></TextInput>
+            </View>
+            <View style={{ justifyContent: "center" }}>
+              <TouchableOpacity onPress={() => handleClearInput()}>
+                <Ionicons name={"close"} size={25} color={"#949494"} />
+              </TouchableOpacity>
+            </View>
           </View>
           <View style={{ height: 1, backgroundColor: "#949494" }}></View>
           <View
@@ -244,31 +248,29 @@ const Translations = ({ navigation }) => {
                       height: 35,
                     }}
                   >
-                   
                     <CustomText
                       text={item.language}
                       style={{ color: "#949494" }}
                     />
-                    {renderCountries(item)}
+                    {/* {renderCountries(item)} */}
                     <Ionicons
-                          name={"chevron-down"}
-                          size={20}
-                          color={"#949494"}
-                        />
+                      name={"chevron-down"}
+                      size={20}
+                      color={"#949494"}
+                    />
                   </View>
                   <View
                     style={{ height: 1, backgroundColor: "#949494" }}
                   ></View>
                   <View style={styles.Search_field}>
-                  
                     <CustomText
                       text={item.translatedText}
                       style={{ color: COLORS.text_placeholder }}
                     />
-                   </View>
+                  </View>
                   <View
                     style={{ height: 1, backgroundColor: "#949494" }}
-                   ></View>
+                  ></View>
                   <View
                     style={{
                       alignItems: "flex-end",
@@ -313,7 +315,13 @@ const Translations = ({ navigation }) => {
             </TouchableOpacity>
             <CustomText
               text={"Select Languages to translate"}
-              style={{ fontSize: 18, fontWeight: "bold", marginTop: 15 }}
+              style={{
+                fontSize: 18,
+                fontWeight: "bold",
+                marginTop: 15,
+                alignSelf: "center",
+                bottom: 10,
+              }}
             />
             <FlatList
               showsVerticalScrollIndicator={false}

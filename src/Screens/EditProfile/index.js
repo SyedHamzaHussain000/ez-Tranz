@@ -32,7 +32,7 @@ const EditProfile = ({ navigation }) => {
     let data = new FormData();
     data.append("name", name);
 
-    console.log("emailllll", name);
+    console.log("Nameeeeeee", name);
 
     let config = {
       method: "post",

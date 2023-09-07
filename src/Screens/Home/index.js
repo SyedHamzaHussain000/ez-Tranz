@@ -5,7 +5,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import FastImage from "react-native-fast-image";
 import images from "../../Constants/images";
 import CustomText from "../../Components/Text";
@@ -27,13 +27,10 @@ const Home = ({ navigation }) => {
     navigation.navigate("Translations");
   };
 
- 
-  
   const filteredFlagsData = FlagsData.filter((item) =>
     item.language.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  
   return (
     <FastImage source={images.Background} style={{ flex: 1 }}>
       <View

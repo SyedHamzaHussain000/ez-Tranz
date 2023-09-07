@@ -4,40 +4,38 @@ import {
   TouchableOpacity,
   ToastAndroid,
   ScrollView,
-  Image
-} from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './index.style';
-import CustomText from '../../Components/Text';
-import InputField from '../../Components/InputFiled';
-import CustomButton from '../../Components/Button';
-import FastImage from 'react-native-fast-image';
-import images from '../../Constants/images';
+  Image,
+} from "react-native";
+import React, { useState } from "react";
+import { styles } from "./index.style";
+import CustomText from "../../Components/Text";
+import InputField from "../../Components/InputFiled";
+import CustomButton from "../../Components/Button";
+import FastImage from "react-native-fast-image";
+import images from "../../Constants/images";
 import axios from "axios";
 import BassUrl from "../../BassUrl";
 import Toast from "react-native-toast-message";
-import { useDispatch } from 'react-redux';
-import { UserLogin } from '../../Redux/authSlice';
-import { LoaderModal } from '../../Components';
+import { useDispatch, useSelector } from "react-redux";
+import { UserLogin } from "../../Redux/authSlice";
+import { LoaderModal } from "../../Components";
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoader, setIsLoader] = useState(false);
 
   const dispatch = useDispatch();
 
-  // const loader = useSelector((state) => state.data.isLoader);
-
+  // const loader = useSelector((state) => state.data.isLoading);
+  // console.log('loderrrrrrrrrrrrrrrrrrrrrrrrrr', loader)
 
   const loginUser = async () => {
     setIsLoader(true);
     let data = new FormData();
     data.append("email", email);
     data.append("password", password);
-
     console.log("emailllll", email, password);
-
     let config = {
       method: "post",
       maxBodyLength: Infinity,
@@ -47,14 +45,11 @@ const Login = ({navigation}) => {
       },
       data: data,
     };
-
     dispatch(UserLogin(config));
-
     axios
       .request(config)
       .then((response) => {
         setIsLoader(false);
-
         if (response.data.success === true) {
           showToast("success", response.data.message);
           console.log(JSON.stringify(response.data));
@@ -84,68 +79,73 @@ const Login = ({navigation}) => {
 
   return (
     <>
-      <FastImage source={images.Background} style={{flex: 1}}>
-      <Image source={images.logo} style={{height:70, width:70, alignSelf:'center', marginTop:40}}/>
+      <FastImage source={images.Background} style={{ flex: 1 }}>
+        <Image
+          source={images.logo}
+          style={{ height: 70, width: 70, alignSelf: "center", marginTop: 40 }}
+        />
 
-        <ScrollView style={{flex: 1}}>
-
+        <ScrollView style={{ flex: 1 }}>
           <View style={styles.main_container}>
             <View style={styles.container}>
               <CustomText
-                text={'Sign In with email or username'}
+                text={"Sign In with email or username"}
                 style={styles.screen_title}
               />
               <InputField
-                placeholder={'username or email'}
+                placeholder={"username or email"}
                 value={email}
                 onChangeText={setEmail}
-                keyboardType={'email-address'}
+                keyboardType={"email-address"}
               />
               <InputField
-                placeholder={'password'}
+                placeholder={"password"}
                 value={password}
-                onChangeText={text => setPassword(text)}
+                onChangeText={(text) => setPassword(text)}
                 secureTextEntry
               />
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('ForgetPassword');
+                  navigation.navigate("ForgetPassword");
                 }}
-                style={{alignSelf: 'flex-end', marginTop: 10}}>
-                <CustomText text={'forgot password?'} style={{fontSize: 14}} />
+                style={{ alignSelf: "flex-end", marginTop: 10 }}
+              >
+                <CustomText
+                  text={"forgot password?"}
+                  style={{ fontSize: 14 }}
+                />
               </TouchableOpacity>
-          {isLoader ? (
-            <LoaderModal/>
-          ):(
-
-
-              <CustomButton
-                buttonText={'Sign In'}
-                onPress={() => {
+              {isLoader ? (
+                <LoaderModal />
+              ) : (
+                <CustomButton
+                  buttonText={"Sign In"}
+                  onPress={() => {
                     loginUser();
-                }}
-              />
-          )}
+                  }}
+                />
+              )}
 
               {/* {isLoading && <ActivityIndicator size={80} color="gray" />} */}
               <View style={styles.devider_View} />
 
-              <TouchableOpacity style={{alignSelf: 'center', marginTop: 10}}>
+              <TouchableOpacity style={{ alignSelf: "center", marginTop: 10 }}>
                 <CustomText
-                  text={'Dont have an account?'}
-                  style={{fontSize: 14}}
+                  text={"Dont have an account?"}
+                  style={{ fontSize: 14 }}
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate('SignUp')}
-                style={[styles.container_create, {marginTop: 30}]}>
-                <CustomText style={styles.txt} text={'Create an account'} />
+                onPress={() => navigation.navigate("SignUp")}
+                style={[styles.container_create, { marginTop: 30 }]}
+              >
+                <CustomText style={styles.txt} text={"Create an account"} />
               </TouchableOpacity>
             </View>
           </View>
         </ScrollView>
       </FastImage>
-      {/* <Toast /> */}
+      <Toast />
     </>
   );
 };

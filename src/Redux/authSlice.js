@@ -37,6 +37,7 @@ const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
+        // action reducers
         SignIn: (state, action) => {
             state.user = action.payload;
         },
@@ -52,6 +53,7 @@ const authSlice = createSlice({
         } 
     },
     extraReducers: (builder) => {
+        // async action reducers
         builder.addCase(UserLogin.pending, (state) => {
             state.isLoading = true;
         });
