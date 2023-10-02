@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
       flag_container_list:{
         height:40,
         width:40,
-        resizeMode:'center'
+        // resizeMode:'center'
       },
       card_:{
         height:60,

@@ -1,12 +1,13 @@
-import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import Icon from "../../Constants/Icons";
+import Feather from "react-native-vector-icons/Feather";
 
 
 const InputField = ({
   style,
   placeholder,
   onChangeText,
-  secureText,
   keyboardType,
   defaultValue,
   onFocus,
@@ -16,27 +17,46 @@ const InputField = ({
   value,
   returnKeyType,
   multiline,
-  textContentType
+  textContentType,
+  Lefticon,
+  icon,
 }) => {
+  const [passwordHide, setpasswordHide] = useState(true);
+  // console.log("passwordHide:", passwordHide);
   return (
-    <TextInput
-      ref={ref}
-      value={value}
-      onChangeText={onChangeText}
-      keyboardType={keyboardType}
-      placeholder={placeholder}
-      secureTextEntry={secureText}
-      style={[styles.input, style]}
-      placeholderTextColor={'#949494'}
-      defaultValue={defaultValue}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      editable={isEdit}
-      returnKeyType={returnKeyType}
-      underlineColorAndroid="transparent"
-      multiline={multiline}
-      textContentType={textContentType}
-    />
+    <View>
+      <TextInput
+        ref={ref}
+        value={value}
+        onChangeText={onChangeText}
+        keyboardType={keyboardType}
+        placeholder={placeholder}
+        secureTextEntry={passwordHide}
+        style={[styles.input, style]}
+        placeholderTextColor={"#949494"}
+        defaultValue={defaultValue}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        editable={isEdit}
+        returnKeyType={returnKeyType}
+        underlineColorAndroid="transparent"
+        multiline={multiline}
+        textContentType={textContentType}
+      />
+      {icon && (
+        <TouchableOpacity
+          style={styles.Righticon}
+          onPress={() => setpasswordHide(!passwordHide)}
+        >
+          {passwordHide ? (
+            <Feather name="eye" size={22} color={"gray"} />
+          ) : (
+            <Feather name="eye-off" size={22} color={"gray"} />
+          )}
+        </TouchableOpacity>
+      )}
+     
+    </View>
   );
 };
 const styles = StyleSheet.create({
@@ -44,11 +64,17 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 20,
     paddingHorizontal: 30,
-    color: 'black',
-    backgroundColor: '#fff',
+    color: "black",
+    backgroundColor: "#fff",
     borderRadius: 10,
-    borderWidth:1,
-    borderColor:'white'
+    borderWidth: 1,
+    borderColor: "white",
+  },
+  Righticon: {
+    position: "absolute",
+    alignSelf: "flex-end",
+    padding: 15,
+    marginTop:20
   },
 });
 

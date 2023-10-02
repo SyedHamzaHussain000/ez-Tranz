@@ -347,6 +347,7 @@ const Translations = ({ navigation }) => {
                     >
                       <Image
                         source={item.image}
+                        resizeMode="cover"
                         style={styles.flag_container_list}
                       />
                       {/* <CustomText

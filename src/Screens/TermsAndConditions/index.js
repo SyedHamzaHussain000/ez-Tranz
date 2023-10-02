@@ -36,7 +36,7 @@ const privacyPolicy = {
     `,
 };
 const TermsAndConditions = ({route}) => {
-    const {navigatedFrom} = route.params;
+    const navigatedFrom = route.params?.navigatedFrom
 
   const { width } = useWindowDimensions();
 
