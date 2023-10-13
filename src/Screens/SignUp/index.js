@@ -100,13 +100,15 @@ const SignUp = ({ navigation }) => {
               placeholder={"password"}
               value={password}
               onChangeText={setPassword}
-              secureTextEntry
+              icon={true}
+              secureText={true}
             />
             <InputField
               placeholder={"Re-type Password"}
               value={confirmPassword}
               onChangeText={setConfirmPassword}
-              secureTextEntry
+              icon={true}
+              secureText={true}
             />
             <View style={styles.checkView}>
               <RadioButton

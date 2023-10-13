@@ -348,6 +348,7 @@ const Translations = ({ navigation }) => {
                       <Image
                         source={item.image}
                         style={styles.flag_container_list}
+                        // resizeMode="repeat"
                       />
                       {/* <CustomText
                         text={item.country}

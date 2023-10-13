@@ -1,5 +1,8 @@
-import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+
+import React, {useState} from "react";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import Feather from "react-native-vector-icons/Feather";
+import { COLORS } from "../../Constants/theme";
 
 
 const InputField = ({
@@ -16,18 +19,22 @@ const InputField = ({
   value,
   returnKeyType,
   multiline,
-  textContentType
+  textContentType,
+  icon
 }) => {
+const [passwordHide, setpasswordHide] = useState(secureText);
+
   return (
+    <View>
     <TextInput
       ref={ref}
       value={value}
       onChangeText={onChangeText}
       keyboardType={keyboardType}
       placeholder={placeholder}
-      secureTextEntry={secureText}
+      secureTextEntry={passwordHide}
       style={[styles.input, style]}
-      placeholderTextColor={'#949494'}
+      placeholderTextColor={"#949494"}
       defaultValue={defaultValue}
       onFocus={onFocus}
       onBlur={onBlur}
@@ -36,7 +43,21 @@ const InputField = ({
       underlineColorAndroid="transparent"
       multiline={multiline}
       textContentType={textContentType}
+      cursorColor={COLORS.black}
     />
+    {icon && (
+      <TouchableOpacity
+        style={styles.Righticon}
+        onPress={() => setpasswordHide(!passwordHide)}
+      >
+        {passwordHide ? (
+          <Feather name="eye-off" size={22} color={"gray"} />
+          ) : (
+          <Feather name="eye" size={22} color={"gray"} />
+        )}
+      </TouchableOpacity>
+    )}
+  </View>
   );
 };
 const styles = StyleSheet.create({
@@ -49,6 +70,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth:1,
     borderColor:'white'
+  },
+  Righticon: {
+    position: "absolute",
+    alignSelf: "flex-end",
+    padding: 15,
+    marginTop: 20,
   },
 });
 

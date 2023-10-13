@@ -213,8 +213,8 @@ export default FlagsData = [
     {
       id: 34,
       image: images.Israel,
-      language: " Arabic",
-      short_form: 'ar'
+      language: "Hebrew",
+      short_form: 'he'
     },
     {
       id: 35,

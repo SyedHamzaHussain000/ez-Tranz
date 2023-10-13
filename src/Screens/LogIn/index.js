@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
       .then((response) => {
         setIsLoader(false);
         if (response.data.success === true) {
-          showToast("success", response.data.message);
+          // showToast("success", response.data.message);
           console.log(JSON.stringify(response.data));
           emptyStats();
         } else {
@@ -102,7 +102,8 @@ const Login = ({ navigation }) => {
                 placeholder={"password"}
                 value={password}
                 onChangeText={(text) => setPassword(text)}
-                secureTextEntry
+                secureText
+                icon={true} 
               />
               <TouchableOpacity
                 onPress={() => {
