@@ -46,7 +46,6 @@ const ResetPassword = ({ navigation, route }) => {
         maxBodyLength: Infinity,
         url:
         `${BassUrl}/api/update-forget-password`,
-          // "https://customdemo.website/apps/tranz/public/api/update-forget-password",
         headers: {
           "Content-Type": "multipart/form-data",
         },

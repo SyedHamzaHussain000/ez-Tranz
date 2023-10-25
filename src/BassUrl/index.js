@@ -1,2 +1,2 @@
 
-export default 'https://customdemo.website/apps/tranz/public'
+export default 'https://eztrans.co/public'

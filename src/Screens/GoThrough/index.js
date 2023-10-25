@@ -173,7 +173,7 @@ const GoThrough = ({ navigation }) => {
             method: "post",
             maxBodyLength: Infinity,
             url:
-              "https://customdemo.website/apps/tranz/public/api/social-media-register",
+              "https://eztrans.co/public/api/social-media-register",
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -231,7 +231,7 @@ const GoThrough = ({ navigation }) => {
   //         method: "post",
   //         maxBodyLength: Infinity,
   //         url:
-  //           "https://customdemo.website/apps/tranz/public/api/social-media-register",
+  //           "https://eztrans.co/public/api/social-media-register",
   //         headers: {
   //           "Content-Type": "multipart/form-data",
   //         },
