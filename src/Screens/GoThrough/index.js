@@ -52,20 +52,29 @@ const GoThrough = ({ navigation }) => {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log("user info >>>>>>>>>", userInfo);
+      await setIsLoader(false)
+
+      let data = new FormData()
+      data.append('email', userInfo.user.email);
+      data.append('name', userInfo.user.name);
+      data.append('profile_image', {
+        name: 'image',
+        type: 'png',
+        uri: userInfo.user.photo
+      });
 
       const config = {
-        
         method: "post",
         maxBodyLength: Infinity,
         url: `${BassUrl}/api/social-media-register`,
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        
+        data: data
       };
-    setIsLoader(true);
+      setIsLoader(true);
 
-      // dispatch(UserLogin(config));
+      dispatch(UserLogin(config));
     } catch (error) {
     setIsLoader(false);
 
@@ -97,12 +106,13 @@ const GoThrough = ({ navigation }) => {
       console.log("resultlll >>>>>>>>", firstPermission);
 
       if (result.isCancelled) {
+        setIsLoader(false)
         throw "User cancelled the login process";
       }
-      // console.log("resultttttt  >>>>>>>", result.grantedPermissions.email);
       const data = await AccessToken.getCurrentAccessToken();
 
       if (!data) {
+        setIsLoader(false)
         throw "Something went wrong obtaining access token";
       }
       const facebookCredential = auth.FacebookAuthProvider.credential(
@@ -113,17 +123,18 @@ const GoThrough = ({ navigation }) => {
       await auth()
         .signInWithCredential(facebookCredential)
         .then((res) => {
-          console.log(
-            "emailllllllllllllllllll.......................................................",
-            res.user.photoURL
-          );
+          setIsLoader(false)
+          console.log(res.user.photoURL);
 
           fetchUserData(facebookCredential?.token, res.user.photoURL);
-        });
+        })
+        .catch(() => {
+          setIsLoader(false)
+        })
 
-      console.log("emailllllllllllllllllll", result);
     } catch (error) {
-      console.error(error);
+      setIsLoader(false)
+      console.error("=============>>   ", error);
     }
   };
 

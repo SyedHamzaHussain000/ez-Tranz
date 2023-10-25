@@ -1,8 +1,7 @@
 
-import React, { useState }, {useState} from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "../../Constants/Icons";
-import Feather from "react-native-vector-icons/Feather";
 import Feather from "react-native-vector-icons/Feather";
 import { COLORS } from "../../Constants/theme";
 
@@ -22,8 +21,7 @@ const InputField = ({
   multiline,
   textContentType,
   Lefticon,
-  icon,,
-  icon
+  icon,
 }) => {
   const [passwordHide, setpasswordHide] = useState(true);
   // console.log("passwordHide:", passwordHide);
@@ -35,7 +33,7 @@ const InputField = ({
         onChangeText={onChangeText}
         keyboardType={keyboardType}
         placeholder={placeholder}
-        secureTextEntry={passwordHide}
+        secureTextEntry={icon ? passwordHide : false}
         style={[styles.input, style]}
         placeholderTextColor={"#949494"}
         defaultValue={defaultValue}

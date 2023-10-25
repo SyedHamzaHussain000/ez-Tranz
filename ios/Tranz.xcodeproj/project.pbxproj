@@ -46,6 +46,25 @@
 		AFB9C5F6EDEEA19FE612DE4B /* Pods_Tranz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tranz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FA3456E12ABBA4D200ABDEE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA8A25382AE98B5D004B4328 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		FA8A25392AE98B5D004B4328 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		FA8A253A2AE98B5D004B4328 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		FA8A253B2AE98B5D004B4328 /* FontAwesome6_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Regular.ttf; sourceTree = "<group>"; };
+		FA8A253C2AE98B5D004B4328 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		FA8A253D2AE98B5D004B4328 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		FA8A253E2AE98B5D004B4328 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		FA8A253F2AE98B5D004B4328 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		FA8A25402AE98B5D004B4328 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		FA8A25412AE98B5D004B4328 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		FA8A25422AE98B5D004B4328 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		FA8A25432AE98B5D004B4328 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		FA8A25442AE98B5D004B4328 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		FA8A25452AE98B5D004B4328 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		FA8A25462AE98B5D004B4328 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		FA8A25472AE98B5D004B4328 /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Solid.ttf; sourceTree = "<group>"; };
+		FA8A25482AE98B5D004B4328 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		FA8A25492AE98B5D004B4328 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
+		FA8A254A2AE98B5D004B4328 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +107,7 @@
 		13B07FAE1A68108700A75B9A /* Tranz */ = {
 			isa = PBXGroup;
 			children = (
+				FA8A25372AE98B5D004B4328 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				FA3456E12ABBA4D200ABDEE3 /* GoogleService-Info.plist */,
@@ -151,6 +171,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA8A25372AE98B5D004B4328 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA8A25382AE98B5D004B4328 /* Fontisto.ttf */,
+				FA8A25392AE98B5D004B4328 /* Octicons.ttf */,
+				FA8A253A2AE98B5D004B4328 /* Feather.ttf */,
+				FA8A253B2AE98B5D004B4328 /* FontAwesome6_Regular.ttf */,
+				FA8A253C2AE98B5D004B4328 /* Entypo.ttf */,
+				FA8A253D2AE98B5D004B4328 /* FontAwesome5_Brands.ttf */,
+				FA8A253E2AE98B5D004B4328 /* MaterialCommunityIcons.ttf */,
+				FA8A253F2AE98B5D004B4328 /* AntDesign.ttf */,
+				FA8A25402AE98B5D004B4328 /* Foundation.ttf */,
+				FA8A25412AE98B5D004B4328 /* Ionicons.ttf */,
+				FA8A25422AE98B5D004B4328 /* FontAwesome5_Solid.ttf */,
+				FA8A25432AE98B5D004B4328 /* FontAwesome5_Regular.ttf */,
+				FA8A25442AE98B5D004B4328 /* FontAwesome.ttf */,
+				FA8A25452AE98B5D004B4328 /* Zocial.ttf */,
+				FA8A25462AE98B5D004B4328 /* EvilIcons.ttf */,
+				FA8A25472AE98B5D004B4328 /* FontAwesome6_Solid.ttf */,
+				FA8A25482AE98B5D004B4328 /* SimpleLineIcons.ttf */,
+				FA8A25492AE98B5D004B4328 /* FontAwesome6_Brands.ttf */,
+				FA8A254A2AE98B5D004B4328 /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,7 +251,8 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -450,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Tranz-TranzTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -477,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Tranz-TranzTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = TranzTests/Info.plist;
