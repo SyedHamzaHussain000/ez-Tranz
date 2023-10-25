@@ -37,6 +37,13 @@
             {
               "client_id": "935651938156-4vmgqqeqmu2erh2rbh9lolr80ptiand0.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "935651938156-dpah2vbplk0l913vuo38r1jvhtuutt4i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Tranz"
+              }
             }
           ]
         }

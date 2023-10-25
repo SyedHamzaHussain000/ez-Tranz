@@ -27,31 +27,48 @@ const GoThrough = ({ navigation }) => {
   }, []);
   //  google login
   const configureGoogleSignIn = async () => {
+
     try {
+
       GoogleSignin.configure({
-        webClientId: "YOUR_WEB_CLIENT_ID",
+        // webClientId: "6466219219",
+        webClientId: "935651938156-05f6v7u8ik2hkef60qu4h571a6jb8cdp.apps.googleusercontent.com",
+        androidClientId: '569166938062-q8i4085vs3jh08mcb4ue3t7u2n6ubo0v.apps.googleusercontent.com',
         offlineAccess: true,
+        // scopes: ['profile', 'email']
       });
     } catch (error) {
+    setIsLoader(false);
+
       console.error("Google Sign-In Configuration Error:", error);
     }
   };
   const googleLogIn = async () => {
+    setIsLoader(true);
+
     try {
+    setIsLoader(true);
+
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log("user info >>>>>>>>>", userInfo);
 
       const config = {
+        
         method: "post",
         maxBodyLength: Infinity,
         url: `${BassUrl}/api/social-media-register`,
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        
       };
-      dispatch(UserLogin(config));
+    setIsLoader(true);
+
+      // dispatch(UserLogin(config));
     } catch (error) {
+    setIsLoader(false);
+
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log("Google Sign-In Cancelled", error);
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -243,6 +260,9 @@ const GoThrough = ({ navigation }) => {
             text={"Sign In to your account"}
             style={styles.title_txt}
           />
+           {isLoader ? (
+            <LoaderModal />
+          ) : (
           <TouchableOpacity
             onPress={() => googleLogIn()}
             style={[styles.container, { marginTop: 25 }]}
@@ -250,6 +270,7 @@ const GoThrough = ({ navigation }) => {
             <Image source={images.Google_Icon} style={{ marginRight: 20 }} />
             <CustomText style={styles.txt} text={"Sign in with google"} />
           </TouchableOpacity>
+          )}
           {isLoader ? (
             <LoaderModal />
           ) : (

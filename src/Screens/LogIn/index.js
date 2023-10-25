@@ -102,8 +102,8 @@ const Login = ({ navigation }) => {
                 placeholder={"password"}
                 value={password}
                 onChangeText={(text) => setPassword(text)}
-                secureText
-                icon={true} 
+                secureTextEntry={true}
+                icon={true}
               />
               <TouchableOpacity
                 onPress={() => {

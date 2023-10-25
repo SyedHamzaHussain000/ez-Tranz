@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { COLORS } from '../../Constants/theme';
 
 export const styles = StyleSheet.create({
   main_container: {
@@ -33,6 +34,8 @@ export const styles = StyleSheet.create({
   },
   termsTxt:{
     fontSize:11,
-    textDecorationLine:'underline'
+    textDecorationLine:'underline',
+    color:COLORS.primary
+  
   }
 });

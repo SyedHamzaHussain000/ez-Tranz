@@ -22,6 +22,8 @@ const SignUp = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoader, setIsLoader] = useState(false);
 
+  // console.log("checkedddddddddddddd", typeof checked);
+
   const RegisterUser = async () => {
     setIsLoader(true);
     let data = new FormData();
@@ -37,7 +39,6 @@ const SignUp = ({ navigation }) => {
       },
       data: data,
     };
-
     axios
       .request(config)
       .then((response) => {
@@ -71,6 +72,15 @@ const SignUp = ({ navigation }) => {
       text1: msg,
     });
   };
+
+  const handleRadioPress = (value) => {
+    if (checked === value) {
+      setChecked(null);
+    } else {
+      setChecked(value);
+    }
+  };
+
   return (
     <FastImage source={images.Background} style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1 }}>
@@ -116,13 +126,18 @@ const SignUp = ({ navigation }) => {
                 color={COLORS.primary}
                 uncheckedColor="#949494"
                 status={checked === "first" ? "checked" : "unchecked"}
+                onPress={() => handleRadioPress("first")}
               />
               <CustomText
-                text={"I have read and accept the "}
+                text={"I have read and accept the    "}
                 style={styles.termsText}
               />
               <TouchableOpacity
-                onPress={() => navigation.navigate("TermsAndConditions", {navigatedFrom:'TermsAndConditions'})}
+                onPress={() =>
+                  navigation.navigate("TermsAndConditions", {
+                    navigatedFrom: "TermsAndConditions",
+                  })
+                }
               >
                 <CustomText
                   text={"terms and conditions"}
@@ -132,7 +147,11 @@ const SignUp = ({ navigation }) => {
             </View>
             <View style={{ paddingLeft: 30 }}>
               <TouchableOpacity
-                onPress={() => navigation.navigate("TermsAndConditions", {navigatedFrom:'Privacypolicy'})}
+                onPress={() =>
+                  navigation.navigate("TermsAndConditions", {
+                    navigatedFrom: "Privacypolicy",
+                  })
+                }
               >
                 <CustomText text={"Privacy Policy"} style={styles.termsTxt} />
               </TouchableOpacity>
@@ -141,6 +160,7 @@ const SignUp = ({ navigation }) => {
               <LoaderModal />
             ) : (
               <CustomButton
+                isDisabled={!checked}
                 onPress={() => RegisterUser()}
                 buttonText={"Create an account"}
               />
