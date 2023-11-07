@@ -7,16 +7,15 @@ import { useSelector } from "react-redux";
 
 const Route = () => {
   const Stack = createStackNavigator();
-  const token = useSelector((state) => state.data.token);
+  const {token, sneakPeek} = useSelector((state) => state.data);
 
-  console.log("tokeeeennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn", token);
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="AuthStack"
       >
-        {token ? (
+        {token || sneakPeek ? (
           <Stack.Screen name="MainStack" component={MainStack} />
         ) : (
           <Stack.Screen name="AuthStack" component={AuthStack} />

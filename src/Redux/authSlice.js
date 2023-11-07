@@ -5,6 +5,7 @@ import Toast from "react-native-toast-message";
 const initialState = {
     user: [],
     token: '',
+    sneakPeek: false,
     isLoading: false,
     isError: false
 };
@@ -50,7 +51,10 @@ const authSlice = createSlice({
         },
         updateUser: (state,  action) => {
             state.user = action.payload
-        } 
+        },
+        turnSneakPeekState: (state, action) => {
+            state.sneakPeek = action.payload
+        }
     },
     extraReducers: (builder) => {
         // async action reducers
@@ -65,5 +69,5 @@ const authSlice = createSlice({
     }
 });
 
-export const {SignIn, setToken,logOut, updateUser} = authSlice.actions;
+export const {SignIn, setToken,logOut, updateUser, turnSneakPeekState} = authSlice.actions;
 export default authSlice.reducer;
