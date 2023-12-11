@@ -15,11 +15,12 @@ const Route = () => {
         screenOptions={{ headerShown: false }}
         initialRouteName="AuthStack"
       >
-        {token || sneakPeek ? (
+        <Stack.Screen name="MainStack" component={MainStack} />
+        {/* {token || sneakPeek ? (
           <Stack.Screen name="MainStack" component={MainStack} />
         ) : (
           <Stack.Screen name="AuthStack" component={AuthStack} />
-        )}
+        )} */}
       </Stack.Navigator>
     </NavigationContainer>
   );

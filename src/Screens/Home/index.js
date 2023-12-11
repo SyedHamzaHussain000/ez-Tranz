@@ -39,39 +39,39 @@ const Home = ({ navigation }) => {
   return (
     <FastImage source={images.Background} style={{ flex: 1 }}>
       
-          <View
-            style={sneakPeek ? { flexDirection: 'row', justifyContent: 'space-between', alignItems: "center", marginHorizontal: 20, marginTop: 15} : {marginVertical: 30, marginRight: 20}}
-          >
-            {
-              sneakPeek ? (
-                <TouchableOpacity  onPress={() => dispatch(turnSneakPeekState(false))} style={{borderWidth: 2, borderColor: 'white', padding: 6, borderRadius: 5}}>
-                  <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>Sign Up</Text>
-                </TouchableOpacity>
-              ) : null
-            }
-            
-            <TouchableOpacity style={!sneakPeek ? {position:'absolute', right: 0, top: 10} : null} onPress={() => {
-              if(!sneakPeek){
-                navigation.navigate("Profile")
-              }else {
-                Alert.alert(
-                  "Can't use this feature in sneak peek mode 🥲",
-                  "Sign up or Login to use this language 🙂",
-                  [
-                    {
-                      text: "Stay in this mode",
-                      style: "cancel"
-                    },
-                    { text: "Sign up", onPress: () => {
-                      dispatch(turnSneakPeekState(false))
-                    }}
-                  ]
-                );
-              }
-            }}>
-              <Octicons name={"person"} size={35} color={COLORS.text_white} />
+      {/* <View
+        style={sneakPeek ? { flexDirection: 'row', justifyContent: 'space-between', alignItems: "center", marginHorizontal: 20, marginTop: 15} : {marginVertical: 30, marginRight: 20}}
+      >
+        {
+          sneakPeek ? (
+            <TouchableOpacity  onPress={() => dispatch(turnSneakPeekState(false))} style={{borderWidth: 2, borderColor: 'white', padding: 6, borderRadius: 5}}>
+              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>Sign Up</Text>
             </TouchableOpacity>
-          </View>
+          ) : null
+        }
+        
+        <TouchableOpacity style={!sneakPeek ? {position:'absolute', right: 0, top: 10} : null} onPress={() => {
+          if(!sneakPeek){
+            navigation.navigate("Profile")
+          }else {
+            Alert.alert(
+              "Can't use this feature in sneak peek mode 🥲",
+              "Sign up or Login to use this language 🙂",
+              [
+                {
+                  text: "Stay in this mode",
+                  style: "cancel"
+                },
+                { text: "Sign up", onPress: () => {
+                  dispatch(turnSneakPeekState(false))
+                }}
+              ]
+            );
+          }
+        }}>
+          <Octicons name={"person"} size={35} color={COLORS.text_white} />
+        </TouchableOpacity>
+      </View> */}
 
 
       <View style={styles.main_container}>

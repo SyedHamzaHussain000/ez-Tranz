@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
+  Text
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import FastImage from "react-native-fast-image";
@@ -163,11 +164,12 @@ const Translations = ({ navigation }) => {
             style={{ backgroundColor: "white", borderRadius: 6, marginTop: 15 }}
           >
             <TouchableOpacity onPress={() => toggleModal()}>
-              <Ionicons
+              {/* <Ionicons
                 name={"globe-outline"}
                 size={30}
                 color={COLORS.primary}
-              />
+              /> */}
+              <Text style={{color: 'grey', fontWeight: 'bold', fontSize: 16, padding: 10}}>CHOOSE LANGUAGE</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -216,8 +218,10 @@ const Translations = ({ navigation }) => {
               onPress={() => {
                 handleTranslate();
               }}
+              style={{backgroundColor: COLORS.primary, padding: 5, marginTop: 5, borderRadius: 5}}
             >
-              <Ionicons name={"search"} size={25} color={COLORS.primary} />
+              {/* <Ionicons name={"search"} size={25} color={COLORS.primary} /> */}
+              <Text style={{color: 'white', fontSize: 15, fontWeight: 'bold'}}>Translate</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => handleCopy()}>
               <Feather name={"copy"} size={20} color={"#949494"} />
@@ -282,6 +286,7 @@ const Translations = ({ navigation }) => {
                     <TouchableOpacity
                       onPress={() => {
                         Clipboard.setString(item.translatedText);
+                        showToast("success", "Text Added To ClipBoard");
                       }}
                     >
                       <Feather name={"copy"} size={20} color={"#949494"} />
